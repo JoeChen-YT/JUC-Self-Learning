@@ -23,6 +23,10 @@ public class JavaThreadCreation {
         };
     }
 
+    /*
+     Using runnable to create the thread object is better than the previous one, since it decouples the operation task
+     which is the runnable object from the thread which is basically a running engine.
+     */
     private static Thread threadCreationViaRunnable() {
         final Runnable runnable = new Runnable() {
             @Override
@@ -34,7 +38,6 @@ public class JavaThreadCreation {
     }
     private static Thread threadCreationViaRunnableInLambda() {
         return new Thread(() -> {log.info(CHILD_THREAD_LOG_MESSAGE);},"ChildThread");
-
     }
 
 }
