@@ -1,4 +1,4 @@
-package joe.experiment.juc.thread.basic;
+package joe.experiment.juc.thread.basic.creation;
 
 import lombok.extern.log4j.Log4j2;
 
