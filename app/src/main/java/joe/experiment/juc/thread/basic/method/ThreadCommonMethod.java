@@ -11,8 +11,8 @@ public class ThreadCommonMethod {
 //        threadStartMethod();
 //        threadGetStateMethod();
 //        threadSleepMethod();
-//        threadJoinMethod();
-        threadSetDaemonMethod();
+        threadJoinMethod();
+//        threadSetDaemonMethod();
     }
 
     private static Thread getThread() {
@@ -68,11 +68,11 @@ public class ThreadCommonMethod {
         final Thread thread = getThread();
         log.info("I'm currently in state as {}.", thread.getState());
         thread.start();
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         log.info("I'm currently in state as {}.", thread.getState());
     }
 
@@ -108,7 +108,7 @@ public class ThreadCommonMethod {
 //            threadToBeJoined.join();
 
             // set a timeout value along with the join()
-            threadToBeJoined.join(1000);
+            threadToBeJoined.join(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
