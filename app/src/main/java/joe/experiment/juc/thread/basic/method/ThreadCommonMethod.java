@@ -11,8 +11,9 @@ public class ThreadCommonMethod {
 //        threadStartMethod();
 //        threadGetStateMethod();
 //        threadSleepMethod();
-        threadJoinMethod();
+//        threadJoinMethod();
 //        threadSetDaemonMethod();
+        threadSleepWithInterrupted();
     }
 
     private static Thread getThread() {
@@ -97,6 +98,23 @@ public class ThreadCommonMethod {
         log.info("The t1_sleep is with state as {}", threadWithSleep.getState());
         log.info("Now I'm the main thread trying to interrupt the sleepy thread t1");
         threadWithSleep.interrupt();
+    }
+
+    private static void threadSleepWithInterrupted() throws InterruptedException {
+        final Thread thread = new Thread(() -> {
+            log.info("Trying to interrupt myself");
+            Thread.currentThread().interrupt();
+            log.info("IsInterrupted {}", Thread.currentThread().isInterrupted());
+            try {
+                Thread.sleep(5000);
+                log.info("Successfully sleep after interrupted");
+            } catch (InterruptedException e) {
+                log.info("The thread has been interrupted by other thread");
+            }
+        });
+        thread.start();
+        Thread.sleep(3000);
+        thread.interrupt();
     }
 
     private static void threadJoinMethod() {
