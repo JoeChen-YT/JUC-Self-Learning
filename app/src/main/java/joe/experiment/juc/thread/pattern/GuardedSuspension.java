@@ -50,7 +50,19 @@ public class GuardedSuspension {
 }
 
 class GuardedObject<T> {
+    // it was created for the GuardedSuspensionExample in another package
+    private int id;
     private T object;
+
+    public GuardedObject(int id) {
+        this.id = id;
+    }
+
+    public GuardedObject() {}
+
+    public int getId() {
+        return id;
+    }
 
     public T get() {
         synchronized (this) {
